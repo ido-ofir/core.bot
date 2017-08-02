@@ -2,6 +2,8 @@ module.exports = function <% name %> (args) {
 
     var here = process.cwd();
     
-    console.log(colors.green(`${ <% name %> } is ok √`))
+    console.log(`'<% name %>' in '${ here }'`.green);
+
+    process.exit();
 
 };

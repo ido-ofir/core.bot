@@ -2,10 +2,9 @@ var fs = require('fs');
 var path = require('path');
 
 
-module.exports = function (args) {
+module.exports = function (name) {
 
     var here = process.cwd();
-    var name = args.shift();
     try {
 
         var camel = name[0].toUpperCase() + name.slice(1);
@@ -18,13 +17,13 @@ module.exports = function (args) {
         // var componentTemplate = core.template.from(componentTemplatePath, { name: component });
 
         core.write(path.join(here, name), template);
-        console.log(colors.green(`created client ${ name }.`));
+        console.log(`created client ${ name }.`.green);
         process.exit();
 
     } catch (err) {
 
         if (err.errno === -17) {
-            throw colors.red(`client '${ name }' already exists.`);
+            throw `client '${ name }' already exists.`.red;
         } else {
             throw err;
         }

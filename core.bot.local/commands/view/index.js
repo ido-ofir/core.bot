@@ -9,13 +9,13 @@ module.exports = function (args) {
     try {
 
         core.parseFolder(path.join(__dirname, 'template'), path.join(here, name), { name: name });
-        console.log(colors.green(`created command ${ name }.`));
+        console.log(`created view ${ name }.`.green);
         process.exit();
 
     } catch (err) {
 
         if (err.errno === -17) {
-            throw colors.red(`command '${ name }' already exists.`);
+            throw `view '${ name }' already exists.`.red;
         } else {
             throw err;
         }

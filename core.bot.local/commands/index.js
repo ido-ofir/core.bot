@@ -3,4 +3,4 @@
 
 var repl = require('repl');
 
-repl.start(colors.grey('core.bot> '));
+repl.start('core.bot> '.grey);

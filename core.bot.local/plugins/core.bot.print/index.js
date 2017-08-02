@@ -1,9 +1,9 @@
 
 
-var c = colors.blue;
+function c(s){ return s.blue}
 
-function string(t){ return c('"') + colors.green(t) + c('"') }
-function number(t){ return colors.cyan(t); }
+function string(t){ return c('"') + t.green + c('"') }
+function number(t){ return t.cyan; }
 function value(t){
     var type = typeof t;
     if(type === 'string'){
@@ -18,7 +18,7 @@ function value(t){
         var str = [c('Function (')];
         args = args.split(',');
         args.map(function(arg, i){
-            str.push(colors.purple(arg));
+            str.push(arg.purple);
             if(i < (args.length - 1)){
                 str.push(c(','));
             }
@@ -27,10 +27,10 @@ function value(t){
         return str.join('');
     }
     if(Array.isArray(t)){
-        return c('Array (') + colors.cyan(t.length) + c(')'); //colors.cyan('[ ' + t.length + ' ]');
+        return c('Array (') + String(t.length).cyan + c(')'); //colors.cyan('[ ' + t.length + ' ]');
     }
     if(type === 'object'){
-        return c('Object (') + colors.cyan(Object.keys(t).length) + c(')'); //colors.cyan('{ ' + Object.keys(t).length + ' } ');
+        return c('Object (') + String(Object.keys(t).length).cyan + c(')'); //colors.cyan('{ ' + Object.keys(t).length + ' } ');
     }
     return c(t);
 }
@@ -57,7 +57,7 @@ function print(t){
         if(!keys.length) { return console.log(c('{}')); }
         console.log(c('{'));
         keys.map(function(key, i){
-            console.log(c('  "') + colors.green(key) + c('": ') + value(t[key]) + ((i < (keys.length - 1)) ? c(',') : ''));
+            console.log(c('  "') + key.green + c('": ') + value(t[key]) + ((i < (keys.length - 1)) ? c(',') : ''));
         });
         console.log(c('}'));
     }

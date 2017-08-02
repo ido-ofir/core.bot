@@ -70,6 +70,9 @@ module.exports = {
                 to(path, folderObject, context){
                     var parsed = templateObject(folderObject, context);
                     core.write(path, parsed);
+                },
+                parse(object, context){
+                    return templateObject(object, context)
                 }
             },
             parseFolder(from, to, context){

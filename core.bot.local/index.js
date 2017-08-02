@@ -2,20 +2,34 @@
 var fs = require('fs');
 var { join } = require('path');
 
-// load all plugins in the 'plugins' folder.
-var names = fs.readdirSync( join(__dirname, 'plugins') );
+// an array of the cli arguments that you've passed after `core.bot`.
+// removing 'node' and 'core.bot'.
+var args = process.argv.slice(2); 
 
+// full path to the 'commands' folder.
+var commandsPath = join(__dirname, 'commands');
+
+// full path to the 'plugins' folder.
+var pluginsPath = join(__dirname, 'plugins');
+
+// names of all plugins in the 'plugins' folder.
+var names = fs.readdirSync( pluginsPath );
+
+// require all plugins in the 'plugins' folder.
 var plugins = names.map(name => {
-    var path = join(__dirname, 'plugins', name);
-    return require(path);
+    return require( join(pluginsPath, name) );
 });
 
+// load all plugins to core.
 core.plugin(plugins);
 
-// an array of the cli arguments that you've passed after `core.bot`.
-var cliArgs = core.bot.arguments
+// full path to the command.
+var commandPath = join(__dirname, 'commands', args.shift() || '');
 
-// find the command in the local 'commands' folder and run it.
-core.bot.exec(
-    cliArgs
-);
+// require the command module
+var command = require(commandPath);
+
+// if it's a function call it with the rest of the arguments.
+if(core.isFunction(command)){
+    command.apply(core, args);
+}
