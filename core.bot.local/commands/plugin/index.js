@@ -13,7 +13,7 @@ module.exports = function (name, folder) {
         template[`${name}.js`] = template[`plugin.js`];
         delete template[`plugin.js`];
         core.write(fPath, template);
-        console.log(`plugin ${ name } => ${ fPath } ok`.green);
+        console.log(`plugin '${ name }' => ${ fPath } ok`.green);
         process.exit();
 
     } catch (err) {

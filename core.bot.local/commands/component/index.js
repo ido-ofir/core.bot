@@ -6,9 +6,15 @@ module.exports = function (name) {
 
     var here = process.cwd();
     try {
-
-        core.parseFolder(path.join(__dirname, 'template'), path.join(here, name), { name: name });
-        console.log(`created component ${ name }.`.green);
+        var fPath = path.join(here, name);
+        var templatePath = path.join(__dirname, 'template');
+        var template = core.template.from(templatePath, { name: name });
+        template[`${name}.test.js`] = template[`test.js`];
+        delete template[`test.js`];
+        template[`${name}.jsx`] = template[`component.jsx`];
+        delete template[`component.jsx`];
+        core.write(fPath, template);
+        console.log(`component '${ name }' => ${ fPath }`.green);
         process.exit();
 
     } catch (err) {

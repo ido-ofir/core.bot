@@ -2,14 +2,19 @@ var fs = require('fs');
 var path = require('path');
 
 
-module.exports = function (args) {
+module.exports = function (name) {
 
     var here = process.cwd();
-    var name = args.shift();
     try {
-
-        core.parseFolder(path.join(__dirname, 'template'), path.join(here, name), { name: name });
-        console.log(`created view ${ name }.`.green);
+        var fPath = path.join(here, name);
+        var templatePath = path.join(__dirname, 'template');
+        var template = core.template.from(templatePath, { name: name });
+        template[`${name}.test.js`] = template[`test.js`];
+        delete template[`test.js`];
+        template[`${name}.jsx`] = template[`view.jsx`];
+        delete template[`view.jsx`];
+        core.write(fPath, template);
+        console.log(`view '${ name }' => ${ fPath }`.green);
         process.exit();
 
     } catch (err) {
