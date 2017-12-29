@@ -7,7 +7,7 @@ if(module.hot) {
         var <% name %> = require('./<% name %>.js');
         <% plugin ? (name + ".name = '" + plugin + "." + name + "';") : '' %>
         core.injector.revoke(<% name %>.name);
-        core.Module(<% name %>);
+        core.Type(<% name %>);
         core.emit('hotUpdate');
 
     });

@@ -2,6 +2,9 @@
 
 var webpack = require('webpack');
 var path = require('path');
+var publicPath = '/output/';
+var outputPath = path.join(__dirname, 'output');
+var buildPath = path.join(outputPath, 'build');
 
 var entry = path.resolve(__dirname, 'source/App.jsx');
 
@@ -14,9 +17,9 @@ var config = {
     devtool : 'eval',
 
     output: {
-        path : path.join(__dirname, 'build'),
+        path : buildPath,
         filename : 'bundle.js',
-        publicPath: '/build/'
+        publicPath: publicPath
     },
 
     plugins : [
@@ -49,7 +52,7 @@ var config = {
                 loader: 'babel-loader',
                 query:
                 {
-                  presets:['react','es2015', 'stage-0']
+                  presets:['react','env', 'stage-0']
                 }
             },
             {
@@ -58,7 +61,7 @@ var config = {
                 loader: 'babel-loader',
                 query:
                 {
-                  presets:['client-core','es2015', 'stage-0']
+                  presets:['client-core','env', 'stage-0']
                 }
             },
             { test: /.png$/, loader: "url?mimetype=image/png" },
@@ -71,6 +74,18 @@ var config = {
     //     extensions: ['', '.js', '.jsx']
     // }
 };
+
+if (process.argv[1] && (process.argv[1].indexOf('webpack-dev-server') > -1)) {
+    config.plugins.push(new webpack.HotModuleReplacementPlugin());
+    config.devServer = {
+        hot: true,
+        contentBase: outputPath,  // match the output path
+        publicPath: '/build',   // match the output `publicPath`
+        headers: {
+            'Access-Control-Allow-Origin': '*'
+        }
+    };
+}
 
 
 module.exports = config;

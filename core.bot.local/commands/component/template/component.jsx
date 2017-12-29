@@ -1,7 +1,4 @@
 
-import React from 'react';
-import pt from 'prop-types';
-
 module.exports = {
     name: "<% name %>",
     description: '',
@@ -20,7 +17,7 @@ module.exports = {
 
         return {
             propsTypes: {
-                // title: pt.string
+                // title: PropTypes.string
             },
             getDefaultProps(){
                 return {

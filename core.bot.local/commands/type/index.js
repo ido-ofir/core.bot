@@ -11,16 +11,16 @@ module.exports = function (name, plugin) {
         var template = core.template.from(templatePath, { name: name, plugin: plugin });
         template[`${name}.test.js`] = template[`test.js`];
         delete template[`test.js`];
-        template[`${name}.jsx`] = template[`view.jsx`];
-        delete template[`view.jsx`];
+        template[`${name}.js`] = template[`type.js`];
+        delete template[`type.js`];
         core.write(fPath, template);
-        console.log(`view '${ name }' => ${ fPath }`.green);
+        console.log(`type '${ name }' => ${ fPath }`.green);
         process.exit();
 
     } catch (err) {
 
         if (err.errno === -17) {
-            throw `view '${ name }' already exists.`.red;
+            throw `type '${ name }' already exists.`.red;
         } else {
             throw err;
         }

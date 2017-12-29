@@ -4,6 +4,6 @@
  *  test component <% name %>
  */
 
-core.test(<% name %>, function(<% name %>){
+core.test('<% name %>', function(<% name %>){
 
 });

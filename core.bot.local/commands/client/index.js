@@ -1,5 +1,6 @@
 var fs = require('fs');
 var path = require('path');
+const { spawn } = require('child_process');
 
 
 module.exports = function (name) {
@@ -15,10 +16,17 @@ module.exports = function (name) {
 
         var template = core.template.from(templatePath, context);
         // var componentTemplate = core.template.from(componentTemplatePath, { name: component });
-
-        core.write(path.join(here, name), template);
-        console.log(`created client ${ name }.`.green);
-        process.exit();
+        var fPath = path.join(here, name);
+        core.write(fPath, template);
+        const install = spawn('npm', ['install'], { 
+            cwd: fPath,
+            stdio: ['pipe', process.stdout, process.stderr]
+        });
+        install.on('close', (code) => {
+            console.log(``);
+            console.log(`created client ${ name }.`.green);
+            process.exit();
+        });
 
     } catch (err) {
 
