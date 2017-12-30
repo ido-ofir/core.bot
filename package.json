@@ -7,7 +7,7 @@
     "bot": "bin/index.js"
   },
   "dependencies": {
-    "core.skeleton": "0.0.1"
+    "core.constructor": "1.0.0"
   },
   "scripts": {},
   "author": "ido-ofir",

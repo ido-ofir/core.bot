@@ -9,15 +9,18 @@ var args = process.argv.slice(2);
 // full path to the 'commands' folder.
 var commandsPath = join(__dirname, 'commands');
 
-// full path to the 'plugins' folder.
-var pluginsPath = join(__dirname, 'plugins');
+// full path to the 'node_modules' folder.
+var nodeModulesPath = join(__dirname, 'node_modules');
 
-// names of all plugins in the 'plugins' folder.
-var names = fs.readdirSync( pluginsPath );
+// names of all modules in the 'node_modules' folder.
+var names = fs.readdirSync( nodeModulesPath );
 
-// require all plugins in the 'plugins' folder.
-var plugins = names.map(name => {
-    return require( join(pluginsPath, name) );
+// require all modules in the 'node_modules' folder that have a name that starts with 'core.'.
+var plugins = [];
+names.map(name => {
+    if(name.indexOf('core.') === 0){
+        plugins.push(require( join(nodeModulesPath, name) ))
+    }
 });
 
 // load all plugins to core.

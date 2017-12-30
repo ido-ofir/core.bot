@@ -1,0 +1,14 @@
+{
+  "name": "core.bot.local",
+  "version": "1.0.0",
+  "description": "local bot configuration",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "core.plugin.uuid": "0.0.2"
+  }
+}
