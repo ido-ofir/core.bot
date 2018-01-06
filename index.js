@@ -19,18 +19,16 @@ function getLocalPath(pathArray){
 }
 
 var globalPath = path.join(__dirname, 'core.bot.local');
-var localPath = getLocalPath(process.cwd().split(path.sep));
-var botPath = localPath || globalPath;
+var localPath = getLocalPath(process.cwd().split(path.sep)) || globalPath;
 
 var core = global.core = global.bot = new Core({
     name: 'core.bot',
     extend: {
-        bot: {
-            globalPath: globalPath,
-            localPath: localPath,
-            path: botPath
+        paths: {
+            global: globalPath,
+            local: localPath
         }        
     }
 });
 
-require(botPath);
+require(localPath);

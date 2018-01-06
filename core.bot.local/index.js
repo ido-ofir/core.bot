@@ -24,7 +24,7 @@ names.map(name => {
 });
 
 // load all plugins to core.
-core.plugin(plugins);
+bot.plugin(plugins);
 
 // full path to the command.
 var commandPath = join(__dirname, 'commands', args.shift() || '');
@@ -32,7 +32,16 @@ var commandPath = join(__dirname, 'commands', args.shift() || '');
 // require the command module
 var command = require(commandPath);
 
+bot.flags = {};
+args = args.filter(function(arg){ 
+    if(arg.indexOf('-') === 0){ 
+        bot.flags[arg] = true;
+        return false;
+    }
+    return true;
+})
+
 // if it's a function call it with the rest of the arguments.
-if(core.isFunction(command)){
-    command.apply(core, args);
+if(bot.isFunction(command)){
+    command.apply(bot, args);
 }

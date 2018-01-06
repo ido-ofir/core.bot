@@ -28,3 +28,7 @@ module.exports = function (name) {
     }
 
 };
+
+module.exports.help = `
+    ● creates a new action called #purple(name).
+`

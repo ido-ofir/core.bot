@@ -1,10 +1,10 @@
 var fs = require('fs');
 var path = require('path');
+var here = process.cwd();
 
 
 module.exports = function (name, folder) {
 
-    var here = process.cwd();
     try {
         var fPath = path.join(here, folder || '', name);
         var template = core.template.from(path.join(__dirname, 'template'), { name: name });
@@ -27,3 +27,7 @@ module.exports = function (name, folder) {
     }
 
 };
+
+module.exports.help = `
+    ● create a new plugin called #purple(name) in #yellow('${here}').
+`;

@@ -18,11 +18,12 @@ module.exports = function (name) {
         // var componentTemplate = core.template.from(componentTemplatePath, { name: component });
         var fPath = path.join(here, name);
         core.write(fPath, template);
-        const install = spawn('npm', ['install'], { 
-            cwd: fPath,
-            stdio: ['pipe', process.stdout, process.stderr]
-        });
-        install.on('close', (code) => {
+        var production = this.flags['-p'] || this.flags['--production'];
+        var args = ['npm', 'install'];
+        if(production){
+            args.push('--production');
+        }
+        core.exec(args, { cwd: fPath }, (code) => {
             console.log(``);
             console.log(`created client ${ name }.`.green);
             process.exit();
@@ -39,3 +40,10 @@ module.exports = function (name) {
     }
 
 };
+
+module.exports.help = `
+    ● create a new directory called #purple(name) as the root of a new web client application.
+    ● install dependencies through npm.
+
+    #red(-p) / #red(--production) - fast install without #yellow(devDependencies). this will install only #cyan('core.web'), #cyan('react') and #cyan('react-dom').
+`;

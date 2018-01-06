@@ -35,3 +35,8 @@ module.exports = function server (name) {
     }
 
 };
+
+module.exports.help = `
+    ● create a new directory as the root of a node http-server application.
+    ● install #cyan('express'), #cyan('body-parser'), #cyan('method-override') and #cyan('colors') from npm.
+`;

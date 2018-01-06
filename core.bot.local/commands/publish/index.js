@@ -48,3 +48,9 @@ module.exports = function publish (desc, version) {
     bump();
 
 };
+
+module.exports.help = `
+    ● bump the npm version as a patch.
+    ● add all files, commit and push to git.
+    ● publish to npm
+`;

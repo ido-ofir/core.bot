@@ -5,9 +5,11 @@ const { spawn } = require('child_process');
 
 /**
  * push
- * @param {string} name 
- * @param {s} commit 
+ * @param {string} message 
+ * @param {string} branch 
  */
+
+
 module.exports = function push (message, branch) {
 
     var here = process.cwd();
@@ -29,3 +31,7 @@ module.exports = function push (message, branch) {
 
     add();
 };
+
+module.exports.help = `
+    add all files and push to git
+`;

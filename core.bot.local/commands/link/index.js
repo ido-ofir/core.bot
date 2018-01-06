@@ -26,3 +26,7 @@ module.exports = function link (args) {
     process.exit();
 
 };
+
+module.exports.help = `
+    create a symlink in the #yellow(node_modules) folder for each #yellow(core.*) folder in the current directory
+`;

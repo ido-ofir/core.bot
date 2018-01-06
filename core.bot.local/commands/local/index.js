@@ -12,3 +12,8 @@ module.exports = function local () {
     process.exit();
     
 };
+
+module.exports.help = `
+    ● create a #yellow(core.bot.local) directory which holds a copy of the bot.
+    ● running #yellow(bot) inside the current directory will use the local bot instead of the global installation.
+`;

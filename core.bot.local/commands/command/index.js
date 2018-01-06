@@ -1,10 +1,10 @@
 var fs = require('fs');
 var path = require('path');
+var here = process.cwd();
 
 
 module.exports = function (name) {
 
-    var here = process.cwd();
     try {
 
         core.parseFolder(path.join(__dirname, 'template'), path.join(here, name), { name: name });
@@ -22,3 +22,7 @@ module.exports = function (name) {
     }
 
 };
+
+module.exports.help = `
+    ● create a new command in #yellow("${ here }").
+`;

@@ -1,0 +1,1 @@
+# Plugin core.bot.log

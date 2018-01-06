@@ -1,10 +1,10 @@
 var fs = require('fs');
 var path = require('path');
+var here = process.cwd();
 
 
 module.exports = function (name, plugin) {
 
-    var here = process.cwd();
     try {
         var fPath = path.join(here, name);
         var templatePath = path.join(__dirname, 'template');
@@ -28,3 +28,8 @@ module.exports = function (name, plugin) {
     }
 
 };
+
+module.exports.help = `
+    ● create a new component called #purple(name) in #yellow('${here}').
+    ● if #purple(plugin) is provided it will be prepended to #purple(name).
+`;

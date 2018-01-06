@@ -1,8 +1,10 @@
+
+var path = require('path');
+var fs = require('fs');
+var here = process.cwd();
+
 module.exports = function clear (args) {
 
-    var here = process.cwd();
-    var fs = require('fs');
-    var path = require('path');
 
     var dir = fs.readdirSync(path.join(here, 'node_modules'));
     dir.map(function (f){
@@ -14,3 +16,7 @@ module.exports = function clear (args) {
     process.exit();
 
 };
+
+module.exports.help = `
+    ● clears all #yellow(core.*) modules from #yellow(${ path.join(here, 'node_modules') }). 
+`
