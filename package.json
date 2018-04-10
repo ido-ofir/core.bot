@@ -1,17 +1,17 @@
 {
-  "name": "core.bot",
-  "version": "1.0.1",
-  "description": "A dynamic node task runner",
-  "main": "index.js",
-  "bin": {
-    "bot": "bin/index.js"
-  },
-  "dependencies": {
-    "core.constructor": "^1.0.2"
-  },
-  "scripts": {},
-  "author": "ido-ofir",
-  "license": "ISC",
-  "repository": "https://github.com/ido-ofir/core.bot.git",
-  "devDependencies": {}
+    "name": "core.bot",
+    "version": "1.0.2",
+    "description": "A dynamic node task runner",
+    "main": "index.js",
+    "bin": {
+        "bot": "bin/index.js"
+    },
+    "dependencies": {
+        "core.constructor": "^1.0.2"
+    },
+    "scripts": {},
+    "author": "ido-ofir",
+    "license": "ISC",
+    "repository": "https://github.com/ido-ofir/core.bot.git",
+    "devDependencies": {}
 }
