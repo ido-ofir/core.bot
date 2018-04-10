@@ -12,7 +12,7 @@ module.exports = function server (name) {
         var fPath = path.join(here, name);
         var templatePath = path.join(__dirname, 'template');
         var template = core.template.from(templatePath, { name: name });
-        core.write(fPath, template);
+        core.write(fPath, template, { failWhenExists: true });
         const i = spawn('npm', ['install'], { 
             cwd: fPath,
             stdio: ['pipe', process.stdout, process.stderr]

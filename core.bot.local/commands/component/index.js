@@ -13,7 +13,7 @@ module.exports = function (name, plugin) {
         delete template[`test.js`];
         template[`${name}.jsx`] = template[`component.jsx`];
         delete template[`component.jsx`];
-        core.write(fPath, template);
+        core.write(fPath, template, { failWhenExists: true });
         console.log(`component '${ name }' => ${ fPath }`.green);
         process.exit();
 

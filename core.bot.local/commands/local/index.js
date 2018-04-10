@@ -5,9 +5,9 @@ var here = process.cwd();
 
 module.exports = function local () {
 
-    var folder = core.read(core.bot.path);
+    var folder = bot.read(bot.paths.local);
     var fPath = path.join(here, 'core.bot.local');
-    core.write(fPath, folder);
+    bot.write(fPath, folder, { failWhenExists: true });
     console.log(`=> ${ fPath }`.green)
     process.exit();
     

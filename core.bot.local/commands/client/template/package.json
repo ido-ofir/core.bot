@@ -32,8 +32,6 @@
     "webpack-dev-server": "^2.9.3"
   },
   "dependencies": {
-    "core.web": "^1.0.0",
-    "react": "15.6.0",
-    "react-dom": "15.6.0"
+    "core.web": "^1.0.5"
   }
 }

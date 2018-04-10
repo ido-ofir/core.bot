@@ -16,7 +16,7 @@ bot
 ```
 You should drop into a <a href="https://nodejs.org/api/repl.html#repl_repl">repl</a> which means the installation was successful. ( press CTRL-C twice to exit )
 
-The bot was designed to allow you to execute your own commands, in a specific area of your file system, like a project folder. It does so by dumping most of it's source code into a local folder called 'core.bot.local'. the location of a 'core.bot.local' is up to you but the commands in a local will only be accessible from the location of the local and downwards.
+The bot was designed to allow you to execute your own commands, in a specific area of your file system, like a project folder. It does so by copying most of it's source code into a local folder called 'core.bot.local'. the location of a 'core.bot.local' is up to you but the commands in a local will only be accessible from the location of the local and downwards.
 
 To create a local, go to the root of a project ( or a projects directory ) and run:
 ```sh
@@ -25,7 +25,7 @@ bot local
 This will create a folder called `core.bot.local`, that looks like this:
 ```
 |-commands
-|-plugins
+|-node_modules
 |-index.js
 ```
 Whenever you run `bot` from within your project now, the bot finds this folder and runs the 'index.js' file.
@@ -54,7 +54,7 @@ These commands are available out of the box:
 * __command__ - create a core.bot command. expects a name as the only argument.
 * __local__ - create a core.bot.local with the bot's source code.
 
-Once you run `bot local` you can step into `core.bot.local/commands` and edit these commands as much as you like. your changes will apply the next time you run the bot.
+Once you run `bot local` you can step into `core.bot.local/commands` and edit these commands. your changes will apply the next time you run the bot.
 
 If you want to create a new command you only nee to add a folder with your command to `core.bot.local/commands`, and you can use the bot to do that for you:
 

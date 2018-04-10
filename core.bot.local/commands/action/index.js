@@ -13,7 +13,7 @@ module.exports = function (name) {
         delete template[`test.js`];
         template[`${name}.js`] = template[`action.js`];
         delete template[`action.js`];
-        core.write(fPath, template);
+        core.write(fPath, template, { failWhenExists: true });
         console.log(`action '${ name }' => ${ fPath }`.green);
         process.exit();
 

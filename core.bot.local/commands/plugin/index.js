@@ -12,7 +12,7 @@ module.exports = function (name, folder) {
         delete template[`test.js`];
         template[`${name}.js`] = template[`plugin.js`];
         delete template[`plugin.js`];
-        core.write(fPath, template);
+        core.write(fPath, template, { failWhenExists: true });
         console.log(`plugin '${ name }' => ${ fPath } ok`.green);
         process.exit();
 

@@ -1,10 +1,13 @@
 
-var fs = require('fs');
-var { join } = require('path');
 
+var globals = ['fs', 'path'];  // native node modules to set as globals
+
+globals.map((key) => { global[key] = require(key); });
+
+var { join } = path;
 // an array of the cli arguments that you've passed after `core.bot`.
 // removing 'node' and 'core.bot'.
-var args = process.argv.slice(2); 
+var args = process.argv.slice(2);
 
 // full path to the 'commands' folder.
 var commandsPath = join(__dirname, 'commands');

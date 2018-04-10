@@ -17,7 +17,7 @@ module.exports = function (name) {
         var template = core.template.from(templatePath, context);
         // var componentTemplate = core.template.from(componentTemplatePath, { name: component });
         var fPath = path.join(here, name);
-        core.write(fPath, template);
+        core.write(fPath, template, { failWhenExists: true });
         var production = this.flags['-p'] || this.flags['--production'];
         var args = ['npm', 'install'];
         if(production){
