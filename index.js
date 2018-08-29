@@ -24,6 +24,7 @@ var localPath = getLocalPath(process.cwd().split(path.sep)) || globalPath;
 var core = global.core = global.bot = new Core({
     name: 'core.bot',
     extend: {
+        package: require('./package.json'),
         paths: {
             global: globalPath,
             local: localPath
