@@ -49,6 +49,7 @@ These commands are available out of the box:
 * __component__ - create a core component. expects a name as the only argument.
 * __view__ - create a core view. expects a name as the only argument.
 * __plugin__ - create a core plugin. expects a name as the only argument.
+* __feature__ - create a core plugin with components, moduels and actions. expects a name as the only argument.
 * __action__ - create a core action. expects a name as the only argument.
 * __client__ - create a core web client. expects a name as the only argument.
 * __command__ - create a core.bot command. expects a name as the only argument.
