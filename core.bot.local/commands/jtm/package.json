@@ -1,0 +1,19 @@
+{
+  "name": "jtm",
+  "version": "1.0.0",
+  "description": "jsdoc to markdown",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "jsdoc",
+    "markdown",
+    "core"
+  ],
+  "author": "Ido Ofir",
+  "license": "ISC",
+  "dependencies": {
+    "jsdoc-to-markdown": "^4.0.1"
+  }
+}

@@ -4,6 +4,7 @@
   "description": "<% name %>",
   "main": "source/App.jsx",
   "scripts": {
+    "start": "./node_modules/.bin/webpack --watch --progress --hide-modules",
     "test": "echo \"Error: no test specified\" && exit 1",
     "hot": "./node_modules/.bin/webpack-dev-server"
   },
